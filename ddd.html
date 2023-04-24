@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Computer Science Quiz</title>
+	<script type="text/javascript">
+		// Define an array of quiz questions and answers
+		var questions = [
+			{
+				question: "What is the most popular programming language in 2021?",
+				choices: ["Python", "Java", "JavaScript", "C++"],
+				correctAnswer: 0
+			},
+			{
+				question: "Which of the following data structures uses LIFO (Last-In-First-Out) order?",
+				choices: ["Queue", "List", "Stack", "Tree"],
+				correctAnswer: 2
+			},
+			{
+				question: "What does CSS stand for?",
+				choices: ["Computer Style Sheets", "Cascading Style Sheets", "Creative Style Sheets", "Custom Style Sheets"],
+				correctAnswer: 1
+			}
+		];
+
+		// Define variables for keeping track of the current question and score
+		var currentQuestion = 0;
+		var score = 0;
+
+		// Function to display the current question and choices
+		function displayQuestion() {
+			// Display the question
+			document.getElementById("question").textContent = questions[currentQuestion].question;
+
+			// Clear previous choices and display new ones
+			var choices = document.getElementById("choices");
+			choices.innerHTML = "";
+			for (var i = 0; i < questions[currentQuestion].choices.length; i++) {
+				choices.innerHTML += "<li><input type='radio' name='answer' value='" + i + "'>" + questions[currentQuestion].choices[i] + "</li>";
+			}
+		}
+
+		// Function to check the user's answer and update the score
+		function checkAnswer() {
+			// Get the user's selected answer
+			var selectedAnswer = document.querySelector("input[name='answer']:checked");
+			if (!selectedAnswer) {
+				alert("Please select an answer!");
+				return;
+			}
+
+			// Check if the answer is correct
+			if (selectedAnswer.value == questions[currentQuestion].correctAnswer) {
+				score++;
+			}
+
+			// Move on to the next question or end the quiz
+			currentQuestion++;
+			if (currentQuestion == questions.length) {
+				alert("Quiz complete! You scored " + score + " out of " + questions.length);
+			} else {
+				displayQuestion();
+			}
+		}
+
+		// Display the first question when the page loads
+		window.onload = displayQuestion;
+	</script>
+</head>
+<body>
+	<h1>Computer Science Quiz</h1>
+	<p id="question"></p>
+	<ul id="choices"></ul>
+	<button onclick="checkAnswer()">Next Question</button>
+
+
+
+	<input type="text" name="email" />
+	<input type="submit" value="emal" onclick="ggg()"/>
+
+
+	<script>
+function ggg(){
+var pin=verifyEmail('mmm@gmail.com');
+alert(pin);
+}
+
+
+		function verifyEmail(email) {
+  // Regular expression to match the email format
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+  // Check if the email matches the format
+  if (!emailRegex.test(email)) {
+    return false;
+  }
+
+  // Split the email into username and domain parts
+  const [username, domain] = email.split('@');
+
+  // Check if the domain exists and has at least one MX record
+  const dns = require('dns');
+  dns.resolveMx(domain, function (err, addresses) {
+    if (err || addresses.length === 0) {
+      return false;
+    }
+  });
+
+  // If all checks pass, the email is potentially valid
+  return true;
+}
+	</script>
+</body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    
+  <div class="container">
+    <h1>Weather Forecast</h1>
+    <div class="location">
+      <input type="text" id="location" placeholder="Enter location">
+      <button onclick="getWeather()">Get Forecast</button>
+    </div>
+    <div class="weather">
+      <h2 id="currentLocation"></h2>
+      <div class="current-weather">
+        <h3>Current Weather</h3>
+        <div class="weather-info">
+          <p class="weather-icon" id="current-icon"></p>
+          <p class="temperature" id="current-temp"></p>
+          <p class="description" id="current-description"></p>
+        </div>
+      </div>
+      <div class="hourly-weather">
+        <h3>Hourly Forecast</h3>
+        <div class="weather-info" id="hourly-weather"></div>
+      </div>
+      <div class="daily-weather">
+        <h3>Daily Forecast</h3>
+        <div class="weather-info" id="daily-weather"></div>
+      </div>
+    </div>
+  </div>
+
+      <script src="js/jh.js"></script>
+  
+</body>
+</html>

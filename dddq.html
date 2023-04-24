@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>تحقق من صحة البريد الإلكتروني</title>
+  </head>
+  <body>
+    <form>
+      <label for="email">البريد الإلكتروني:</label>
+      <input type="email" id="email" name="email" required><br><br>
+      <button type="button" onclick="validateEmail()">تحقق</button>
+    </form>
+    <script>
+      function validateEmail() {
+        var email = document.getElementById("email").value;
+        var api_key = "1e7OfUSwIv0CaWOBGu6169t9Kv7xAqK1";
+        var url =
+          "https://apilayer.net/api/check?access_key=" +
+          api_key +
+          "&email=" +
+          email;
+        var xhr = new XMLHttpRequest();
+        xhr.open("GET", url);
+        xhr.onreadystatechange = function () {
+          if (xhr.readyState === 4 && xhr.status === 200) {
+            var response = JSON.parse(xhr.responseText);
+            if (response.format_valid && response.smtp_check) {
+              alert("البريد الإلكتروني صالح!");
+            } else {
+              alert("البريد الإلكتروني غير صالح!");
+            }
+          }
+        };
+        xhr.send();
+      }
+    </script>
+  </body>
+</html>
